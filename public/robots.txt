@@ -1,0 +1,5 @@
+# robots.txt for MLA Bakaji Thakor Official Website
+User-agent: *
+Allow: /
+
+Sitemap: https://bakajithakor.in/sitemap.xml
