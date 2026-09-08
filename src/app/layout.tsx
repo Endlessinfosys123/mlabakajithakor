@@ -94,22 +94,6 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen flex flex-col antialiased selection:bg-saffron-100 selection:text-saffron-800">
         <LanguageProvider>
-          {/* Top Notice / Announcement Bar */}
-          <div className="bg-navy-950 text-sand-100 py-1.5 px-4 text-xs font-medium border-b border-navy-800/80">
-            <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
-              <div className="flex items-center gap-2">
-                <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="font-gujarati text-[13px]">
-                  સત્તાવાર જનસંપર્ક કાર્યાલય (કલોલ): સોમ-શનિ સવારે ૯ થી સાંજે ૬ | હેલ્પલાઇન: {siteConfig.offices[0].helpline}
-                </span>
-              </div>
-              <div className="hidden sm:flex items-center gap-4 text-slate-300">
-                <span>કલોલ • છત્રાલ • સાઇજ (ગાંધીનગર જિલ્લો)</span>
-                <span className="text-saffron-400 font-semibold">ગુજરાત વિધાનસભા</span>
-              </div>
-            </div>
-          </div>
-
           <Navbar />
           
           <main className="flex-grow pb-16 md:pb-0">
