@@ -35,18 +35,22 @@ export default function ContactPage() {
     <div className="bg-sand-50 min-h-screen py-10 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
-        {/* Breadcrumb in English */}
+        {/* Breadcrumb */}
         <div className="space-y-3">
           <div className="flex items-center gap-2 text-xs font-bold text-saffron-600">
-            <Link href="/" className="hover:underline">Home</Link>
+            <Link href="/" className="hover:underline">
+              {language === 'gu' ? 'મુખ્ય પૃષ્ઠ' : language === 'hi' ? 'मुख्य पृष्ठ' : 'Home'}
+            </Link>
             <span>/</span>
-            <span className="text-slate-500">Contact & Office</span>
+            <span className="text-slate-500">
+              {language === 'gu' ? 'સંપર્ક અને કાર્યાલય' : language === 'hi' ? 'संपर्क एवं कार्यालय' : 'Contact & Office'}
+            </span>
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight font-gujarati">
-            જનસંપર્ક કાર્યાલય અને મુલાકાત (કલોલ)
+            {t.contactPage.title}
           </h1>
           <p className="text-slate-600 text-sm sm:text-base max-w-2xl font-gujarati">
-            કલોલ શહેર અને ગાંધીનગર સ્થિત કાર્યાલયના સરનામા, હેલ્પલાઇન નંબરો અને રૂબરૂ મુલાકાત માટે સમય નોંધણી.
+            {t.contactPage.subtitle}
           </p>
         </div>
 
@@ -64,7 +68,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <span className="text-[11px] font-bold text-saffron-600 uppercase tracking-wider block">
-                      Official Secretariat {idx + 1}
+                      {language === 'gu' ? `સત્તાવાર સચિવાલય ${idx + 1}` : language === 'hi' ? `आधिकारिक सचिवालय ${idx + 1}` : `Official Secretariat ${idx + 1}`}
                     </span>
                     <h3 className="text-lg sm:text-xl font-bold text-navy-900 font-gujarati">
                       {office.name[language]}
@@ -99,14 +103,14 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Action Buttons in English */}
+              {/* Action Buttons */}
               <div className="pt-4 border-t border-sand-200 flex items-center justify-between">
                 <a
                   href={`tel:${office.helpline}`}
                   className="inline-flex items-center gap-2 text-xs font-bold text-saffron-600 hover:text-saffron-700"
                 >
                   <PhoneCall className="w-4 h-4" />
-                  <span>Call Helpline</span>
+                  <span>{t.contactPage.callHelpline}</span>
                 </a>
 
                 <a
@@ -115,7 +119,7 @@ export default function ContactPage() {
                   rel="noopener noreferrer"
                   className="text-xs font-bold text-navy-900 hover:text-saffron-600 transition-colors"
                 >
-                  View on Google Maps ›
+                  {t.contactPage.viewGoogleMaps} ›
                 </a>
               </div>
             </div>
@@ -125,15 +129,15 @@ export default function ContactPage() {
         {/* Appointment Form & Map Section */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* Appointment Request Form in English */}
+          {/* Appointment Request Form */}
           <div className="lg:col-span-7">
             <div className="glass-card p-6 sm:p-8 rounded-3xl border border-sand-200 shadow-xl space-y-6">
               <div className="space-y-1">
                 <h3 className="text-xl font-bold text-navy-900">
-                  Schedule an Appointment with MLA
+                  {t.contactPage.appointmentTitle}
                 </h3>
                 <p className="text-xs text-slate-500 font-gujarati">
-                  આપ આપની વિગતો નોંધાવો. કાર્યાલય દ્વારા સમયની પુષ્ટિ માટે આપનો સંપર્ક કરવામાં આવશે.
+                  {t.contactPage.appointmentSubtitle}
                 </p>
               </div>
 
@@ -141,11 +145,11 @@ export default function ContactPage() {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1">
-                      <label className="text-xs font-bold text-slate-700">Full Name *</label>
+                      <label className="text-xs font-bold text-slate-700">{t.contactPage.fullNameLabel}</label>
                       <input
                         type="text"
                         required
-                        placeholder="Applicant Name"
+                        placeholder={t.contactPage.applicantPlaceholder}
                         value={appointmentForm.name}
                         onChange={(e) => setAppointmentForm({ ...appointmentForm, name: e.target.value })}
                         className="w-full px-4 py-2.5 rounded-xl bg-white border border-sand-300 focus:outline-none focus:ring-2 focus:ring-saffron-500 text-sm"
@@ -153,12 +157,12 @@ export default function ContactPage() {
                     </div>
 
                     <div className="space-y-1">
-                      <label className="text-xs font-bold text-slate-700">Mobile Number *</label>
+                      <label className="text-xs font-bold text-slate-700">{t.contactPage.mobileLabel}</label>
                       <input
                         type="tel"
                         required
                         maxLength={10}
-                        placeholder="10-digit mobile number"
+                        placeholder={language === 'gu' ? '૧૦ આંકડાનો મોબાઇલ નંબર' : language === 'hi' ? '१० अंकों का मोबाइल नंबर' : '10-digit mobile number'}
                         value={appointmentForm.mobile}
                         onChange={(e) => setAppointmentForm({ ...appointmentForm, mobile: e.target.value.replace(/\D/g, '') })}
                         className="w-full px-4 py-2.5 rounded-xl bg-white border border-sand-300 focus:outline-none focus:ring-2 focus:ring-saffron-500 text-sm"
@@ -168,19 +172,19 @@ export default function ContactPage() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1">
-                      <label className="text-xs font-bold text-slate-700">Preferred Meeting Office *</label>
+                      <label className="text-xs font-bold text-slate-700">{t.contactPage.preferredOffice}</label>
                       <select
                         value={appointmentForm.preferredOffice}
                         onChange={(e) => setAppointmentForm({ ...appointmentForm, preferredOffice: e.target.value })}
                         className="w-full px-4 py-2.5 rounded-xl bg-white border border-sand-300 focus:outline-none focus:ring-2 focus:ring-saffron-500 text-sm"
                       >
-                        <option value="kalol">Kalol Public Secretariat (Town Hall)</option>
-                        <option value="gandhinagar">Gandhinagar MLA Quarters (Sector-21)</option>
+                        <option value="kalol">{t.contactPage.officeKalol}</option>
+                        <option value="gandhinagar">{t.contactPage.officeGandhinagar}</option>
                       </select>
                     </div>
 
                     <div className="space-y-1">
-                      <label className="text-xs font-bold text-slate-700">Preferred Date *</label>
+                      <label className="text-xs font-bold text-slate-700">{t.contactPage.preferredDate}</label>
                       <input
                         type="date"
                         required
@@ -192,11 +196,11 @@ export default function ContactPage() {
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-700">Purpose / Subject of Meeting *</label>
+                    <label className="text-xs font-bold text-slate-700">{t.contactPage.purposeLabel}</label>
                     <textarea
                       required
                       rows={3}
-                      placeholder="Briefly describe the purpose of meeting (e.g. village issue, civic work, personal representation)..."
+                      placeholder={t.contactPage.purposePlaceholder}
                       value={appointmentForm.purpose}
                       onChange={(e) => setAppointmentForm({ ...appointmentForm, purpose: e.target.value })}
                       className="w-full px-4 py-2.5 rounded-xl bg-white border border-sand-300 focus:outline-none focus:ring-2 focus:ring-saffron-500 text-sm"
@@ -208,17 +212,17 @@ export default function ContactPage() {
                     className="w-full py-3 px-6 rounded-xl bg-navy-900 hover:bg-navy-800 text-white font-bold text-sm shadow transition-colors flex items-center justify-center gap-2"
                   >
                     <Calendar className="w-4 h-4" />
-                    <span>Submit Appointment Request</span>
+                    <span>{t.contactPage.submitAppointment}</span>
                   </button>
                 </form>
               ) : (
                 <div className="p-6 rounded-2xl bg-emerald-50 border border-emerald-300 text-center space-y-3">
                   <CheckCircle2 className="w-10 h-10 text-emerald-600 mx-auto" />
                   <h4 className="text-lg font-bold text-emerald-900">
-                    Appointment Request Successfully Registered!
+                    {t.contactPage.appointmentSuccess}
                   </h4>
                   <p className="text-xs text-slate-700">
-                    The MLA Secretariat (Kalol) will reach out via mobile within 24 hours to confirm your scheduled slot.
+                    {t.contactPage.appointmentSuccessDesc}
                   </p>
                 </div>
               )}
@@ -231,9 +235,11 @@ export default function ContactPage() {
             <div className="glass-card p-6 rounded-3xl border border-sand-200 shadow-xl space-y-4">
               <div className="flex items-center justify-between">
                 <h4 className="text-base font-bold text-navy-900">
-                  Location Map (Google Maps)
+                  {language === 'gu' ? 'સ્થળ નકશો (Google Maps)' : language === 'hi' ? 'स्थान मानचित्र (Google Maps)' : 'Location Map (Google Maps)'}
                 </h4>
-                <span className="text-[11px] text-saffron-600 font-bold">Kalol Secretariat</span>
+                <span className="text-[11px] text-saffron-600 font-bold">
+                  {language === 'gu' ? 'કલોલ સચિવાલય' : language === 'hi' ? 'कलोल सचिवालय' : 'Kalol Secretariat'}
+                </span>
               </div>
 
               {/* Map Iframe for Kalol Gandhinagar */}
@@ -248,7 +254,7 @@ export default function ContactPage() {
               </div>
 
               <div className="text-xs text-slate-600 leading-relaxed font-gujarati">
-                📍 <strong>સ્થળ માર્ગદર્શન:</strong> કલોલ ટાઉન હોલની સામે, સ્ટેશન રોડ પર મુખ્ય જનસંપર્ક કાર્યાલય આવેલું છે.
+                📍 {t.contactPage.mapGuidance}
               </div>
             </div>
           </div>

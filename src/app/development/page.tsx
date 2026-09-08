@@ -26,13 +26,13 @@ export default function DevelopmentPage() {
   const [viewMode, setViewMode] = useState<'grid' | 'map'>('grid');
 
   const categories = [
-    { id: 'all', label: 'All Projects' },
-    { id: 'water', label: 'Water & Canal' },
-    { id: 'roads', label: 'Roads & Bridges' },
-    { id: 'health', label: 'Healthcare' },
-    { id: 'education', label: 'Education' },
-    { id: 'energy', label: 'Energy & Power' },
-    { id: 'community', label: 'Community' },
+    { id: 'all', label: t.categories.all },
+    { id: 'water', label: t.categories.water },
+    { id: 'roads', label: t.categories.roads },
+    { id: 'health', label: t.categories.health },
+    { id: 'education', label: t.categories.education },
+    { id: 'energy', label: t.categories.energy },
+    { id: 'community', label: t.categories.community },
   ];
 
   const filteredProjects = projectsData.filter((p) => {
@@ -47,24 +47,24 @@ export default function DevelopmentPage() {
     <div className="bg-sand-50 min-h-screen py-10 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         
-        {/* Breadcrumb in English */}
+        {/* Breadcrumb */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div className="space-y-3">
             <div className="flex items-center gap-2 text-xs font-bold text-saffron-600">
-              <Link href="/" className="hover:underline">Home</Link>
+              <Link href="/" className="hover:underline font-gujarati">Home</Link>
               <span>/</span>
-              <span className="text-slate-500">Development Works</span>
+              <span className="text-slate-500 font-gujarati">Development Works</span>
             </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight font-gujarati">
-              કલોલ વિકાસ પ્રકલ્પો • થયેલા કામો
+              {t.home.featuredWorksTitle}
             </h1>
             <p className="text-slate-600 text-sm sm:text-base max-w-2xl font-gujarati">
-              કલોલ શહેર, છત્રાલ, સાઇજ, બોરીસણા સહિતના તમામ વિસ્તારોમાં હોસ્પિટલ, રોડ-ઓવરબ્રિજ, પીવાનું પાણી અને શિક્ષણના સરકારી કામોની પારદર્શક વિગતો.
+              {t.hero.subtitle}
             </p>
           </div>
 
-          {/* Grid vs Map view switch strictly in English */}
-          <div className="flex items-center bg-sand-200/80 p-1 rounded-xl border border-sand-300 self-start md:self-auto">
+          {/* Grid vs Map view switch */}
+          <div className="flex items-center bg-sand-200/80 p-1 rounded-xl border border-sand-300 self-start md:self-auto font-gujarati">
             <button
               onClick={() => setViewMode('grid')}
               className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2 ${
@@ -72,7 +72,7 @@ export default function DevelopmentPage() {
               }`}
             >
               <Layers className="w-3.5 h-3.5" />
-              <span>Grid View</span>
+              <span>{t.common.gridView}</span>
             </button>
             <button
               onClick={() => setViewMode('map')}
@@ -81,7 +81,7 @@ export default function DevelopmentPage() {
               }`}
             >
               <Compass className="w-3.5 h-3.5" />
-              <span>Interactive Map</span>
+              <span>{t.common.interactiveMap}</span>
             </button>
           </div>
         </div>
@@ -101,15 +101,15 @@ export default function DevelopmentPage() {
                 <Search className="w-5 h-5 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
-                  placeholder="Search by area or project name (e.g. Kalol, Chhatral, Saij, Water, Highway)..."
+                  placeholder={t.common.searchProjectsPlaceholder}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 rounded-xl bg-white border border-sand-300 focus:outline-none focus:ring-2 focus:ring-saffron-500 text-sm font-medium"
+                  className="w-full pl-12 pr-4 py-3 rounded-xl bg-white border border-sand-300 focus:outline-none focus:ring-2 focus:ring-saffron-500 text-sm font-medium font-gujarati"
                 />
               </div>
 
-              {/* Category buttons in English */}
-              <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+              {/* Category buttons */}
+              <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none font-gujarati">
                 {categories.map((cat) => (
                   <button
                     key={cat.id}
@@ -127,9 +127,9 @@ export default function DevelopmentPage() {
             </div>
 
             {/* Total count ticker */}
-            <div className="flex items-center justify-between text-xs text-slate-600 font-bold px-1">
-              <span>Showing: {filteredProjects.length} Projects</span>
-              <span className="text-saffron-700">Kalol Constituency Development Budget</span>
+            <div className="flex items-center justify-between text-xs text-slate-600 font-bold px-1 font-gujarati">
+              <span>{t.common.showing} {filteredProjects.length} {t.common.projectsCountLabel}</span>
+              <span className="text-saffron-700">{t.common.constituencyBudgetLabel}</span>
             </div>
 
             {/* Projects Grid */}
@@ -150,8 +150,8 @@ export default function DevelopmentPage() {
                         sizes="(max-width: 768px) 100vw, 400px"
                       />
                       <div className="absolute top-3 right-3">
-                        <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-600 text-white shadow">
-                          {project.status === 'completed' ? 'Completed' : 'In Progress'}
+                        <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-600 text-white shadow font-gujarati">
+                          {project.status === 'completed' ? t.common.status.completed : t.common.status.ongoing}
                         </span>
                       </div>
                       <div className="absolute bottom-3 left-3">
@@ -186,13 +186,13 @@ export default function DevelopmentPage() {
                     </div>
                   </div>
 
-                  {/* Card Button in English */}
+                  {/* Card Button */}
                   <div className="p-5 pt-0">
                     <button
                       onClick={() => setActiveModalProject(project)}
-                      className="w-full py-2.5 px-3 rounded-xl bg-sand-100 hover:bg-sand-200 text-navy-900 text-xs font-bold transition-colors flex items-center justify-center gap-2"
+                      className="w-full py-2.5 px-3 rounded-xl bg-sand-100 hover:bg-sand-200 text-navy-900 text-xs font-bold transition-colors flex items-center justify-center gap-2 font-gujarati"
                     >
-                      <span>View Details & Photos</span>
+                      <span>{t.common.viewDetailsPhotos}</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </button>
                   </div>
@@ -213,8 +213,8 @@ export default function DevelopmentPage() {
             {/* Modal Header */}
             <div className="p-4 sm:p-5 bg-navy-900 text-white flex items-center justify-between">
               <div>
-                <span className="text-xs text-saffron-400 font-bold uppercase tracking-wider block">
-                  Project Details
+                <span className="text-xs text-saffron-400 font-bold uppercase tracking-wider block font-gujarati">
+                  {t.common.projectDetailsModal}
                 </span>
                 <h3 className="text-lg font-bold font-gujarati">
                   {activeModalProject.location.village}
@@ -249,17 +249,17 @@ export default function DevelopmentPage() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-3 gap-3 p-4 rounded-xl bg-sand-50 border border-sand-200 text-xs">
+              <div className="grid grid-cols-3 gap-3 p-4 rounded-xl bg-sand-50 border border-sand-200 text-xs font-gujarati">
                 <div>
-                  <span className="text-slate-500 block">Sanctioned Budget:</span>
+                  <span className="text-slate-500 block">{t.common.budgetSpent}:</span>
                   <span className="font-bold text-navy-900 text-sm">{activeModalProject.budget}</span>
                 </div>
                 <div>
-                  <span className="text-slate-500 block">Completion Year:</span>
+                  <span className="text-slate-500 block">{t.common.completionYear}</span>
                   <span className="font-bold text-navy-900 text-sm">{activeModalProject.year}</span>
                 </div>
                 <div>
-                  <span className="text-slate-500 block">Beneficiaries:</span>
+                  <span className="text-slate-500 block">{t.common.beneficiaries}:</span>
                   <span className="font-bold text-emerald-700 text-sm font-gujarati">{activeModalProject.beneficiariesCount}</span>
                 </div>
               </div>
@@ -267,15 +267,15 @@ export default function DevelopmentPage() {
               {activeModalProject.beforeAfter && (
                 <div className="p-4 rounded-xl bg-emerald-50/60 border border-emerald-200 space-y-2 text-xs font-gujarati">
                   <span className="font-bold text-emerald-900 block uppercase tracking-wider">
-                    Before & After Impact:
+                    {t.common.beforeAfter}
                   </span>
                   <div className="grid grid-cols-2 gap-2 text-slate-700">
                     <div>
-                      <span className="font-semibold text-rose-700 block">Before:</span>
+                      <span className="font-semibold text-rose-700 block">{t.common.before}</span>
                       {activeModalProject.beforeAfter.before}
                     </div>
                     <div>
-                      <span className="font-semibold text-emerald-800 block">After:</span>
+                      <span className="font-semibold text-emerald-800 block">{t.common.after}</span>
                       {activeModalProject.beforeAfter.after}
                     </div>
                   </div>
@@ -284,7 +284,7 @@ export default function DevelopmentPage() {
 
               <div className="space-y-2 font-gujarati">
                 <span className="text-xs font-bold text-slate-800 uppercase tracking-wider block">
-                  Key Highlights:
+                  {t.common.keyHighlights}
                 </span>
                 <ul className="space-y-1.5 text-xs text-slate-700">
                   {activeModalProject.highlights[language].map((hl, idx) => (
@@ -298,13 +298,13 @@ export default function DevelopmentPage() {
 
             </div>
 
-            {/* Modal Footer with English Button */}
-            <div className="p-4 bg-sand-50 border-t border-sand-200 flex justify-end">
+            {/* Modal Footer */}
+            <div className="p-4 bg-sand-50 border-t border-sand-200 flex justify-end font-gujarati">
               <button
                 onClick={() => setActiveModalProject(null)}
                 className="px-5 py-2.5 rounded-xl bg-navy-900 hover:bg-navy-800 text-white text-xs font-bold transition-colors"
               >
-                Close Window
+                {t.common.close}
               </button>
             </div>
 

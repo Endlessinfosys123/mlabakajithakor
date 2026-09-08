@@ -20,7 +20,7 @@ export default function NewsStrip() {
             <span className="text-xs font-bold uppercase tracking-wider text-saffron-600 bg-saffron-50 px-3 py-1 rounded-full border border-saffron-200 inline-block mb-2 font-gujarati">
               <span className="flex items-center gap-1.5">
                 <Newspaper className="w-3.5 h-3.5" />
-                પ્રેસ અને મીડિયા કવરેજ • કલોલ
+                {t.home.newsBadge}
               </span>
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-navy-900 tracking-tight font-gujarati">
@@ -30,9 +30,9 @@ export default function NewsStrip() {
 
           <Link
             href="/media"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-saffron-600 hover:text-saffron-700 transition-colors group"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-saffron-600 hover:text-saffron-700 transition-colors group font-gujarati"
           >
-            <span>View All News & Press</span>
+            <span>{t.home.viewAllNews}</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
@@ -75,8 +75,8 @@ export default function NewsStrip() {
                   </p>
                 </div>
 
-                <div className="pt-2 border-t border-sand-100 flex items-center justify-between text-xs font-bold text-saffron-600">
-                  <span>Read Full Article</span>
+                <div className="pt-2 border-t border-sand-100 flex items-center justify-between text-xs font-bold text-saffron-600 font-gujarati">
+                  <span>{t.home.readFullArticle}</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>

@@ -27,7 +27,7 @@ export default function ConstituencyMapVisual() {
           <span className="text-xs font-bold uppercase tracking-wider text-saffron-600 bg-saffron-50 px-3 py-1 rounded-full border border-saffron-200 inline-block font-gujarati">
             <span className="flex items-center gap-1.5">
               <Compass className="w-3.5 h-3.5" />
-              ઇન્ટરેક્ટિવ નકશો • કલોલ વિધાનસભા (ગાંધીનગર)
+              {t.home.mapBadge}
             </span>
           </span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-navy-900 tracking-tight font-gujarati">
@@ -46,7 +46,7 @@ export default function ConstituencyMapVisual() {
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 rounded-full bg-saffron-500 animate-pulse" />
                 <span className="text-xs font-bold text-navy-900 font-gujarati">
-                  ગામ અથવા ઔદ્યોગિક સેન્ટર પર ક્લિક કરી વિગત જુઓ
+                  {t.home.mapHint}
                 </span>
               </div>
               <span className="text-[11px] text-slate-500 bg-sand-100 px-2.5 py-1 rounded-md font-bold">
@@ -80,9 +80,9 @@ export default function ConstituencyMapVisual() {
                 />
               </svg>
 
-              <div className="absolute bottom-6 left-6 text-[10px] text-sky-700 font-bold bg-sky-50 px-2 py-1 rounded border border-sky-200 flex items-center gap-1 shadow-2xs">
+              <div className="absolute bottom-6 left-6 text-[10px] text-sky-700 font-bold bg-sky-50 px-2 py-1 rounded border border-sky-200 flex items-center gap-1 shadow-2xs font-gujarati">
                 <Droplet className="w-3 h-3" />
-                <span>Narmada Bulk Canal Feeder</span>
+                <span>{t.home.canalFeeder}</span>
               </div>
 
               {/* Village Interactive Pins */}
@@ -108,7 +108,7 @@ export default function ConstituencyMapVisual() {
                         : 'bg-white text-slate-800 border border-slate-300 hover:border-saffron-500'
                     }`}>
                       <MapPin className={`w-3.5 h-3.5 ${isSelected ? 'text-saffron-400' : 'text-saffron-600'}`} />
-                      <span className="whitespace-nowrap">{village.name[language].split(' ')[0]}</span>
+                      <span className="whitespace-nowrap font-gujarati">{village.name[language].split(' ')[0]}</span>
                     </div>
                   </button>
                 );
@@ -117,19 +117,19 @@ export default function ConstituencyMapVisual() {
             </div>
 
             {/* Map Legend */}
-            <div className="mt-4 pt-3 border-t border-sand-100 flex flex-wrap items-center justify-between gap-3 text-[11px] text-slate-600">
+            <div className="mt-4 pt-3 border-t border-sand-100 flex flex-wrap items-center justify-between gap-3 text-[11px] text-slate-600 font-gujarati">
               <div className="flex items-center gap-3">
                 <span className="flex items-center gap-1 font-medium">
-                  <span className="w-2.5 h-2.5 rounded-full bg-saffron-500 inline-block" /> Village / GIDC Pin
+                  <span className="w-2.5 h-2.5 rounded-full bg-saffron-500 inline-block" /> {t.home.legendVillage}
                 </span>
                 <span className="flex items-center gap-1 font-medium">
-                  <span className="w-3 h-0.5 bg-sky-500 inline-block" /> Canal Feeder
+                  <span className="w-3 h-0.5 bg-sky-500 inline-block" /> {t.home.legendCanal}
                 </span>
                 <span className="flex items-center gap-1 font-medium">
-                  <span className="w-3 h-0.5 bg-saffron-600 inline-block" /> Highway 6-Lane
+                  <span className="w-3 h-0.5 bg-saffron-600 inline-block" /> {t.home.legendHighway}
                 </span>
               </div>
-              <span className="text-slate-500 font-semibold">Kalol Assembly (72 Villages & Wards)</span>
+              <span className="text-slate-500 font-semibold font-gujarati">{t.home.legendTotal}</span>
             </div>
           </div>
 
@@ -139,14 +139,14 @@ export default function ConstituencyMapVisual() {
               
               <div className="flex items-start justify-between gap-3 pb-4 border-b border-sand-200">
                 <div>
-                  <span className="text-xs font-bold text-saffron-600 uppercase tracking-wider block">
-                    Taluka: {selectedVillage.taluka}
+                  <span className="text-xs font-bold text-saffron-600 uppercase tracking-wider block font-gujarati">
+                    {t.home.talukaLabel} {selectedVillage.taluka}
                   </span>
                   <h3 className="text-2xl font-extrabold text-navy-900 font-heading">
                     {selectedVillage.name[language]}
                   </h3>
                   <p className="text-xs text-slate-500 font-medium mt-0.5 font-gujarati">
-                    વસ્તી: {selectedVillage.population}
+                    {t.home.populationLabel} {selectedVillage.population}
                   </p>
                 </div>
 
@@ -158,23 +158,23 @@ export default function ConstituencyMapVisual() {
               {/* Metrics */}
               <div className="grid grid-cols-2 gap-3">
                 <div className="p-3.5 rounded-xl bg-sand-50 border border-sand-200">
-                  <span className="text-[11px] text-slate-500 block font-medium">Allocated Budget</span>
+                  <span className="text-[11px] text-slate-500 block font-medium font-gujarati">{t.home.allocatedBudget}</span>
                   <span className="text-lg font-bold text-navy-900 font-heading text-saffron-700">
                     {selectedVillage.fundsSpent}
                   </span>
                 </div>
                 <div className="p-3.5 rounded-xl bg-sand-50 border border-sand-200">
-                  <span className="text-[11px] text-slate-500 block font-medium">Projects Done</span>
-                  <span className="text-lg font-bold text-navy-900 font-heading">
-                    {selectedVillage.projectsCount} Completed
+                  <span className="text-[11px] text-slate-500 block font-medium font-gujarati">{t.home.projectsDone}</span>
+                  <span className="text-lg font-bold text-navy-900 font-heading font-gujarati">
+                    {selectedVillage.projectsCount} {t.home.completedSuffix}
                   </span>
                 </div>
               </div>
 
               {/* Major Work Highlight */}
               <div className="space-y-2">
-                <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block">
-                  Major Development Achievement
+                <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block font-gujarati">
+                  {t.home.majorAchievement}
                 </span>
                 <p className="text-xs sm:text-sm text-slate-700 bg-white p-3.5 rounded-xl border border-sand-200 leading-relaxed font-medium font-gujarati">
                   {selectedVillage.majorWork[language]}
@@ -183,30 +183,30 @@ export default function ConstituencyMapVisual() {
 
               {/* Basic Amenities Status Checklist */}
               <div className="space-y-2 pt-2 border-t border-sand-200 font-gujarati">
-                <span className="text-xs font-semibold text-slate-500 block">મૂળભૂત સુવિધાઓની સ્થિતિ:</span>
+                <span className="text-xs font-semibold text-slate-500 block">{t.home.basicAmenities}</span>
                 <div className="grid grid-cols-1 gap-2 text-xs">
                   <div className="flex items-center gap-2 text-slate-700">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                    <span>નર્મદા બલ્ક પીવાનું શુદ્ધ પાણી ઉપલબ્ધ</span>
+                    <span>{t.home.amenityWater}</span>
                   </div>
                   <div className="flex items-center gap-2 text-slate-700">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                    <span>હાઇવે સાથે ૧૦૦% પાકા ડામર રસ્તા જોડાણ</span>
+                    <span>{t.home.amenityRoads}</span>
                   </div>
                   <div className="flex items-center gap-2 text-slate-700">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                    <span>પ્રાથમિક શાળા સ્માર્ટ ક્લાસરૂમ & RO સુવિધા</span>
+                    <span>{t.home.amenitySchools}</span>
                   </div>
                 </div>
               </div>
 
-              {/* Action Button in English */}
+              {/* Action Button */}
               <div className="pt-2">
                 <Link
                   href="/development"
-                  className="w-full py-3 px-4 rounded-xl bg-navy-900 hover:bg-navy-800 text-white text-xs sm:text-sm font-bold transition-colors flex items-center justify-center gap-2 shadow-sm"
+                  className="w-full py-3 px-4 rounded-xl bg-navy-900 hover:bg-navy-800 text-white text-xs sm:text-sm font-bold transition-colors flex items-center justify-center gap-2 shadow-sm font-gujarati"
                 >
-                  <span>View All Projects in this Area</span>
+                  <span>{t.home.viewVillageProjects}</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>

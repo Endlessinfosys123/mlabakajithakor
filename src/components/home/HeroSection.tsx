@@ -36,8 +36,8 @@ export default function HeroSection() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-saffron-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-saffron-500" />
               </span>
-              <span className="text-saffron-700 font-bold">
-                સક્રિય લોક પ્રતિનિધિ • કલોલ વિધાનસભા (ગાંધીનગર)
+              <span className="text-saffron-700 font-bold font-gujarati">
+                {t.hero.badge}
               </span>
             </div>
 
@@ -54,35 +54,35 @@ export default function HeroSection() {
               </p>
             </div>
 
-            {/* Subtitle / Commitment in Gujarati & English */}
+            {/* Subtitle / Commitment */}
             <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl font-gujarati">
               {t.hero.subtitle}
             </p>
 
-            {/* Quick Action Buttons strictly in English */}
+            {/* Quick Action Buttons */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <Link
                 href="/grievance"
-                className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-saffron-gradient text-white font-bold text-sm sm:text-base shadow-md hover:shadow-saffron-glow transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+                className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-saffron-gradient text-white font-bold text-sm sm:text-base shadow-md hover:shadow-saffron-glow transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 font-gujarati"
               >
                 <AlertCircle className="w-5 h-5" />
-                <span>File Grievance</span>
+                <span>{t.hero.ctaGrievance}</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
 
               <Link
                 href="/development"
-                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white hover:bg-sand-100 text-navy-900 font-bold text-sm sm:text-base border border-slate-300 shadow-2xs transition-all duration-200"
+                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white hover:bg-sand-100 text-navy-900 font-bold text-sm sm:text-base border border-slate-300 shadow-2xs transition-all duration-200 font-gujarati"
               >
-                <span>Explore Works Done</span>
+                <span>{t.hero.ctaWorks}</span>
               </Link>
 
               <a
                 href={`tel:${siteConfig.offices[0].helpline}`}
-                className="inline-flex items-center gap-2 px-4 py-3.5 rounded-xl text-slate-700 hover:text-navy-900 text-xs sm:text-sm font-bold hover:bg-white/80 transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-3.5 rounded-xl text-slate-700 hover:text-navy-900 text-xs sm:text-sm font-bold hover:bg-white/80 transition-colors font-gujarati"
               >
                 <PhoneCall className="w-4 h-4 text-emerald-600" />
-                <span>Call Helpline: {siteConfig.offices[0].helpline}</span>
+                <span>{t.hero.callHelplineNumber} {siteConfig.offices[0].helpline}</span>
               </a>
             </div>
 
@@ -90,15 +90,15 @@ export default function HeroSection() {
             <div className="pt-4 border-t border-sand-200/80 grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs text-slate-600 font-gujarati">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                <span className="font-medium">૨૪x૭ જન સંપર્ક કાર્યાલય</span>
+                <span className="font-medium">{t.hero.trustPoint1}</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                <span className="font-medium">૧૦૦% પારદર્શક ફરિયાદ નિવારણ</span>
+                <span className="font-medium">{t.hero.trustPoint2}</span>
               </div>
               <div className="flex items-center gap-2 col-span-2 sm:col-span-1">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                <span className="font-medium">કલોલ સર્વાંગી વિકાસ સંકલ્પ</span>
+                <span className="font-medium">{t.hero.trustPoint3}</span>
               </div>
             </div>
 
@@ -112,7 +112,7 @@ export default function HeroSection() {
                 <div className="relative h-[420px] sm:h-[480px] w-full rounded-2xl overflow-hidden bg-navy-800">
                   <Image
                     src="/images/bakaji-thakor.jpg"
-                    alt="MLA Bakaji Thakor - Kalol Gujarat Assembly"
+                    alt="MLA Bakaji Thakor - Kalol Assembly"
                     fill
                     priority
                     className="object-cover object-center filter brightness-105 contrast-105"
@@ -124,14 +124,14 @@ export default function HeroSection() {
                   <div className="absolute bottom-4 left-4 right-4 p-4 rounded-xl glass-card-navy text-white">
                     <div className="flex items-center justify-between gap-2">
                       <div>
-                        <span className="text-[11px] text-saffron-400 font-bold uppercase tracking-wider block">
-                          ધારાસભ્યશ્રી
+                        <span className="text-[11px] text-saffron-400 font-bold uppercase tracking-wider block font-gujarati">
+                          {t.hero.photoOverlayTitle}
                         </span>
                         <h3 className="text-xl font-bold font-gujarati">
                           {siteConfig.mlaName[language]}
                         </h3>
-                        <p className="text-xs text-slate-300">
-                          કલોલ વિધાનસભા મતવિસ્તાર (ગાંધીનગર)
+                        <p className="text-xs text-slate-300 font-gujarati">
+                          {t.hero.photoOverlaySub}
                         </p>
                       </div>
                       <div className="w-10 h-10 rounded-full bg-saffron-500/20 border border-saffron-400/40 flex items-center justify-center flex-shrink-0">
@@ -149,10 +149,10 @@ export default function HeroSection() {
                 </div>
                 <div>
                   <span className="text-lg font-extrabold text-navy-900 block leading-tight font-heading">
-                    25+ Years
+                    {t.hero.statYears}
                   </span>
                   <span className="text-[11px] text-slate-600 font-semibold font-gujarati">
-                    નિષ્ઠાવાન જનસેવા
+                    {t.hero.statYearsLabel}
                   </span>
                 </div>
               </div>
@@ -164,10 +164,10 @@ export default function HeroSection() {
                 </div>
                 <div>
                   <span className="text-lg font-extrabold text-navy-900 block leading-tight font-heading">
-                    16,500+
+                    {t.hero.statResolved}
                   </span>
                   <span className="text-[11px] text-slate-600 font-semibold font-gujarati">
-                    ફરિયાદ સફળ નિવારણ
+                    {t.hero.statResolvedLabel}
                   </span>
                 </div>
               </div>

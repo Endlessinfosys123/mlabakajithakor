@@ -97,18 +97,18 @@ export default function AboutPage() {
     <div className="bg-sand-50 min-h-screen py-10 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         
-        {/* Breadcrumb in English */}
+        {/* Breadcrumb */}
         <div className="space-y-3">
           <div className="flex items-center gap-2 text-xs font-bold text-saffron-600">
-            <Link href="/" className="hover:underline">Home</Link>
+            <Link href="/" className="hover:underline font-gujarati">Home</Link>
             <span>/</span>
-            <span className="text-slate-500">About & Bio</span>
+            <span className="text-slate-500 font-gujarati">{t.aboutPage.breadcrumb}</span>
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight font-gujarati">
-            જીવન પરિચય અને લોકસેવા યાત્રા
+            {t.aboutPage.title}
           </h1>
           <p className="text-slate-600 text-sm sm:text-base max-w-3xl font-gujarati">
-            સામાન્ય ખેડૂત પરિવારમાંથી આવીને જનસેવા, સામાજિક ન્યાય અને કલોલ મતવિસ્તારના સર્વાંગી ઉત્થાન માટે સમર્પિત લોકનેતા બકાજી ઠાકોર.
+            {t.aboutPage.subtitle}
           </p>
         </div>
 
@@ -126,14 +126,14 @@ export default function AboutPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent opacity-80" />
               <div className="absolute bottom-6 left-6 right-6 text-white">
-                <span className="text-xs text-saffron-400 font-bold block mb-1 uppercase tracking-wider">
-                  સતત જનસંપર્ક
+                <span className="text-xs text-saffron-400 font-bold block mb-1 uppercase tracking-wider font-gujarati">
+                  {t.aboutPage.badgePhoto}
                 </span>
                 <h3 className="text-2xl font-bold font-gujarati">
                   {siteConfig.mlaName[language]}
                 </h3>
-                <p className="text-xs text-slate-300">
-                  MLA - Kalol Constituency (Gandhinagar)
+                <p className="text-xs text-slate-300 font-gujarati">
+                  {t.hero.photoOverlaySub}
                 </p>
               </div>
             </div>
@@ -142,41 +142,41 @@ export default function AboutPage() {
           <div className="lg:col-span-7 space-y-6">
             <div className="glass-card p-6 sm:p-8 rounded-3xl border border-sand-200 shadow-md space-y-4">
               <h2 className="text-2xl font-bold text-navy-900 font-gujarati">
-                માટી સાથે જોડાયેલું લોકસેવકનું જીવન
+                {t.aboutPage.storyTitle}
               </h2>
               <p className="text-slate-700 text-sm sm:text-base leading-relaxed font-gujarati">
-                બકાજી ઠાકોરનો જન્મ એક સરળ અને પરિશ્રમી કિસાન પરિવારમાં થયો હતો. ગ્રામીણ જીવનના અભાવો, ખેતીની મુશ્કેલીઓ અને સામાન્ય નાગરિકોના રોજિંદા પ્રશ્નોને તેમણે ખૂબ નજીકથી અનુભવ્યા છે.
+                {t.aboutPage.storyP1}
               </p>
               <p className="text-slate-700 text-sm sm:text-base leading-relaxed font-gujarati">
-                કલોલ વિસ્તારના શહેરી વોર્ડથી લઈને છેવાડાના ગ્રામ્ય વિસ્તારોમાં પીવાનું પાણી, આરોગ્ય સુવિધાઓ, શિક્ષણ અને ઔદ્યોગિક રોજગારીના સર્જન માટે તેઓ સતત લડત આપતા રહ્યા છે.
+                {t.aboutPage.storyP2}
               </p>
 
               {/* Personal Factsheet */}
               <div className="grid grid-cols-2 gap-4 pt-4 border-t border-sand-200 text-xs sm:text-sm">
                 <div>
-                  <span className="text-slate-500 font-medium block">Constituency:</span>
-                  <span className="font-bold text-navy-900 font-gujarati">કલોલ, જિલ્લો ગાંધીનગર</span>
+                  <span className="text-slate-500 font-medium block font-gujarati">{t.aboutPage.factConstituency}</span>
+                  <span className="font-bold text-navy-900 font-gujarati">{t.aboutPage.factConstituencyVal}</span>
                 </div>
                 <div>
-                  <span className="text-slate-500 font-medium block">Key Focus:</span>
-                  <span className="font-bold text-navy-900 font-gujarati">આરોગ્ય, કિસાન કલ્યાણ, રોડ નેટવર્ક</span>
+                  <span className="text-slate-500 font-medium block font-gujarati">{t.aboutPage.factFocus}</span>
+                  <span className="font-bold text-navy-900 font-gujarati">{t.aboutPage.factFocusValue}</span>
                 </div>
                 <div>
-                  <span className="text-slate-500 font-medium block">Designation:</span>
-                  <span className="font-bold text-navy-900">MLA (Gujarat Legislative Assembly)</span>
+                  <span className="text-slate-500 font-medium block font-gujarati">{t.aboutPage.factDesignation}</span>
+                  <span className="font-bold text-navy-900 font-gujarati">{t.aboutPage.factDesignationVal}</span>
                 </div>
                 <div>
-                  <span className="text-slate-500 font-medium block">Service Motto:</span>
-                  <span className="font-bold text-saffron-700 font-gujarati">જનસેવા એ જ પ્રભુ સેવા</span>
+                  <span className="text-slate-500 font-medium block font-gujarati">{t.aboutPage.factMotto}</span>
+                  <span className="font-bold text-saffron-700 font-gujarati">{t.aboutPage.factMottoVal}</span>
                 </div>
               </div>
 
               <div className="pt-2">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-navy-900 hover:bg-navy-800 text-white text-xs font-bold transition-colors"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-navy-900 hover:bg-navy-800 text-white text-xs font-bold transition-colors font-gujarati"
                 >
-                  <span>Connect with MLA Office</span>
+                  <span>{t.aboutPage.connectBtn}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
@@ -190,10 +190,10 @@ export default function AboutPage() {
         <div className="space-y-8">
           <div className="text-center max-w-2xl mx-auto space-y-2">
             <span className="text-xs font-bold uppercase tracking-wider text-saffron-600 bg-saffron-50 px-3 py-1 rounded-full border border-saffron-200 inline-block font-gujarati">
-              સંઘર્ષ અને સિદ્ધિઓ
+              {t.aboutPage.timelineBadge}
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-navy-900 font-gujarati">
-              લોકસેવાની સમયરેખા (Career Timeline)
+              {t.aboutPage.timelineTitle}
             </h2>
           </div>
 
@@ -224,10 +224,10 @@ export default function AboutPage() {
         <div className="space-y-8 pt-6">
           <div className="text-center max-w-2xl mx-auto space-y-2">
             <span className="text-xs font-bold uppercase tracking-wider text-saffron-600 bg-saffron-50 px-3 py-1 rounded-full border border-saffron-200 inline-block font-gujarati">
-              સિદ્ધાંતો
+              {t.aboutPage.valuesBadge}
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-navy-900 font-gujarati">
-              મૂળભૂત મૂલ્યો અને લોકસેવા સંકલ્પ
+              {t.aboutPage.valuesTitle}
             </h2>
           </div>
 

@@ -124,22 +124,34 @@ export default function GrievancePage() {
     <div className="bg-sand-50 min-h-screen py-10 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         
-        {/* Breadcrumb in English */}
+        {/* Breadcrumb */}
         <div className="space-y-3">
           <div className="flex items-center gap-2 text-xs font-bold text-saffron-600">
-            <Link href="/" className="hover:underline">Home</Link>
+            <Link href="/" className="hover:underline">
+              {language === 'gu' ? 'મુખ્ય પૃષ્ઠ' : language === 'hi' ? 'मुख्य पृष्ठ' : 'Home'}
+            </Link>
             <span>/</span>
-            <span className="text-slate-500">Jan Sunwai / Grievance</span>
+            <span className="text-slate-500">
+              {language === 'gu' ? 'જન સુનાવણી / ફરિયાદ' : language === 'hi' ? 'जन सुनवाई / शिकायत' : 'Jan Sunwai / Grievance'}
+            </span>
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight font-gujarati">
-            જન સુનાવણી • સીધી ફરિયાદ & રજૂઆત (કલોલ)
+            {language === 'gu'
+              ? 'જન સુનાવણી • સીધી ફરિયાદ & રજૂઆત (કલોલ)'
+              : language === 'hi'
+              ? 'जन सुनवाई • प्रत्यक्ष शिकायत व निवारण (कलोल)'
+              : 'Public Grievance Redressal Portal • Kalol'}
           </h1>
           <p className="text-slate-600 text-sm sm:text-base max-w-3xl leading-relaxed font-gujarati">
-            કલોલ મતવિસ્તારના કોઈપણ નાગરિક પોતાની સમસ્યા, ગામ કે વોર્ડની રજૂઆત સીધી ધારાસભ્ય કાર્યાલય સુધી પહોંચાડી શકે છે. પ્રત્યેક અરજી પર સીધી દેખરેખ રાખવામાં આવે છે.
+            {language === 'gu'
+              ? 'કલોલ મતવિસ્તારના કોઈપણ નાગરિક પોતાની સમસ્યા, ગામ કે વોર્ડની રજૂઆત સીધી ધારાસભ્ય કાર્યાલય સુધી પહોંચાડી શકે છે. પ્રત્યેક અરજી પર સીધી દેખરેખ રાખવામાં આવે છે.'
+              : language === 'hi'
+              ? 'कलोल विधानसभा क्षेत्र के नागरिक अपनी समस्या, गांव या वार्ड की शिकायत सीधे विधायक कार्यालय तक पहुंचा सकते हैं। प्रत्येक अर्जी की सक्रिय निगरानी की जाती है।'
+              : 'Every citizen of Kalol constituency can submit grievances directly to MLA Secretariat. All petitions are actively tracked with assigned nodal officers.'}
           </p>
         </div>
 
-        {/* Tab Switcher strictly in English */}
+        {/* Tab Switcher */}
         <div className="flex items-center border-b border-sand-300">
           <button
             onClick={() => { setActiveTab('new'); setSubmittedTicket(null); }}
@@ -149,7 +161,7 @@ export default function GrievancePage() {
                 : 'text-slate-600 hover:text-navy-900'
             }`}
           >
-            1. Register New Grievance
+            {t.grievance.tabNew}
           </button>
           <button
             onClick={() => setActiveTab('track')}
@@ -159,7 +171,7 @@ export default function GrievancePage() {
                 : 'text-slate-600 hover:text-navy-900'
             }`}
           >
-            2. Track Grievance Status
+            {t.grievance.tabTrack}
           </button>
         </div>
 
@@ -177,10 +189,10 @@ export default function GrievancePage() {
                 >
                   <div className="space-y-1 pb-4 border-b border-sand-200">
                     <h3 className="text-xl font-bold text-navy-900">
-                      Grievance Application Form
+                      {t.grievance.formTitle}
                     </h3>
                     <p className="text-xs text-slate-500 font-gujarati">
-                      તમામ વિગતો ગુજરાતી અથવા અંગ્રેજીમાં ભરી શકો છો. આપને ટોકન નંબર મળશે.
+                      {t.grievance.formSubtitle}
                     </p>
                   </div>
 
@@ -188,12 +200,12 @@ export default function GrievancePage() {
                     {/* Name */}
                     <div className="space-y-1.5">
                       <label className="text-xs font-bold text-slate-700 block">
-                        Full Name of Applicant *
+                        {t.grievance.formName}
                       </label>
                       <input
                         type="text"
                         required
-                        placeholder="e.g. Ramesh Patel"
+                        placeholder={t.grievance.namePlaceholder}
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         className="w-full px-4 py-2.5 rounded-xl bg-white border border-sand-300 focus:outline-none focus:ring-2 focus:ring-saffron-500 text-sm"
@@ -203,13 +215,13 @@ export default function GrievancePage() {
                     {/* Mobile */}
                     <div className="space-y-1.5">
                       <label className="text-xs font-bold text-slate-700 block">
-                        Mobile Number (for SMS & WhatsApp) *
+                        {t.grievance.formMobile}
                       </label>
                       <input
                         type="tel"
                         required
                         maxLength={10}
-                        placeholder="10-digit active mobile number"
+                        placeholder={t.grievance.mobilePlaceholder}
                         value={formData.mobile}
                         onChange={(e) => setFormData({ ...formData, mobile: e.target.value.replace(/\D/g, '') })}
                         className="w-full px-4 py-2.5 rounded-xl bg-white border border-sand-300 focus:outline-none focus:ring-2 focus:ring-saffron-500 text-sm"
@@ -219,42 +231,42 @@ export default function GrievancePage() {
                     {/* Village / Area in Kalol */}
                     <div className="space-y-1.5">
                       <label className="text-xs font-bold text-slate-700 block">
-                        Village / Ward / Area Name (Kalol) *
+                        {t.grievance.formVillage}
                       </label>
                       <select
                         value={formData.village}
                         onChange={(e) => setFormData({ ...formData, village: e.target.value })}
                         className="w-full px-4 py-2.5 rounded-xl bg-white border border-sand-300 focus:outline-none focus:ring-2 focus:ring-saffron-500 text-sm"
                       >
-                        <option value="">Select Area...</option>
+                        <option value="">{t.grievance.selectArea}</option>
                         {constituencyVillages.map((v) => (
                           <option key={v.id} value={v.name[language]}>
                             {v.name[language]} ({v.taluka})
                           </option>
                         ))}
-                        <option value="Kalol City Other Ward">Kalol City (Other Ward)</option>
-                        <option value="Kalol Rural Area">Kalol Rural Area (Other)</option>
+                        <option value="Kalol City Other Ward">{t.grievance.otherWard}</option>
+                        <option value="Kalol Rural Area">{t.grievance.otherRural}</option>
                       </select>
                     </div>
 
                     {/* Category */}
                     <div className="space-y-1.5">
                       <label className="text-xs font-bold text-slate-700 block">
-                        Category / Department *
+                        {t.grievance.formCategory}
                       </label>
                       <select
                         value={formData.category}
                         onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                         className="w-full px-4 py-2.5 rounded-xl bg-white border border-sand-300 focus:outline-none focus:ring-2 focus:ring-saffron-500 text-sm"
                       >
-                        <option value="Drinking Water & Canal Pipeline">Drinking Water & Canal Pipeline</option>
-                        <option value="Roads, Pavement & Overbridge">Roads, Pavement & Overbridge</option>
-                        <option value="Electricity & Agricultural Power Feeder">Electricity & Agricultural Power Feeder</option>
-                        <option value="Health & Government Hospital">Health & Government Hospital</option>
-                        <option value="School, Education & Anganwadi">School, Education & Anganwadi</option>
-                        <option value="Govt Scheme Benefits & Pension">Govt Scheme Benefits & Pension</option>
-                        <option value="Drainage & Sanitation">Drainage & Sanitation</option>
-                        <option value="Other Civic Grievance">Other Civic Grievance</option>
+                        <option value="Drinking Water & Canal Pipeline">{t.grievance.catWater}</option>
+                        <option value="Roads, Pavement & Overbridge">{t.grievance.catRoads}</option>
+                        <option value="Electricity & Agricultural Power Feeder">{t.grievance.catPower}</option>
+                        <option value="Health & Government Hospital">{t.grievance.catHealth}</option>
+                        <option value="School, Education & Anganwadi">{t.grievance.catEdu}</option>
+                        <option value="Govt Scheme Benefits & Pension">{t.grievance.catPension}</option>
+                        <option value="Drainage & Sanitation">{t.grievance.catDrainage}</option>
+                        <option value="Other Civic Grievance">{t.grievance.catOther}</option>
                       </select>
                     </div>
                   </div>
@@ -262,12 +274,12 @@ export default function GrievancePage() {
                   {/* Description */}
                   <div className="space-y-1.5">
                     <label className="text-xs font-bold text-slate-700 block">
-                      Detailed Description of Issue *
+                      {t.grievance.formDescription}
                     </label>
                     <textarea
                       required
                       rows={4}
-                      placeholder="Please provide details of your issue, street address, or survey number..."
+                      placeholder={t.grievance.descPlaceholder}
                       value={formData.description}
                       onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                       className="w-full px-4 py-2.5 rounded-xl bg-white border border-sand-300 focus:outline-none focus:ring-2 focus:ring-saffron-500 text-sm leading-relaxed"
@@ -277,26 +289,26 @@ export default function GrievancePage() {
                   {/* File Mock */}
                   <div className="space-y-1.5">
                     <label className="text-xs font-bold text-slate-700 block">
-                      Attach Photo or Written Application (Optional)
+                      {t.grievance.formPhoto}
                     </label>
                     <div className="p-4 rounded-xl border-2 border-dashed border-sand-300 bg-sand-50 text-center space-y-2 hover:border-saffron-400 transition-colors cursor-pointer">
                       <UploadCloud className="w-8 h-8 text-slate-400 mx-auto" />
                       <div className="text-xs text-slate-600">
-                        <span className="font-bold text-saffron-600">Click to upload photo</span> or drag and drop
+                        <span className="font-bold text-saffron-600">{t.grievance.clickUpload}</span> {t.grievance.dragDrop}
                       </div>
                       <p className="text-[11px] text-slate-400">
-                        PNG, JPG, PDF (Max 10 MB)
+                        {t.grievance.fileFormats}
                       </p>
                     </div>
                   </div>
 
-                  {/* Submit Button in English */}
+                  {/* Submit Button */}
                   <button
                     type="submit"
                     className="w-full py-3.5 px-6 rounded-xl bg-saffron-gradient hover:bg-saffron-600 text-white font-bold text-sm sm:text-base shadow-md hover:shadow-saffron-glow transition-all flex items-center justify-center gap-2"
                   >
                     <Send className="w-4 h-4" />
-                    <span>Submit Grievance</span>
+                    <span>{t.grievance.submitBtn}</span>
                   </button>
                 </form>
               ) : (
@@ -308,36 +320,36 @@ export default function GrievancePage() {
 
                   <div className="space-y-2">
                     <h3 className="text-2xl font-bold text-navy-900">
-                      Grievance Successfully Registered!
+                      {t.grievance.successTitle}
                     </h3>
                     <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto font-gujarati">
-                      ધારાસભ્ય કાર્યાલય દ્વારા આપની અરજી ધ્યાને લેવાઈ છે. આપના મોબાઇલ પર SMS / વોટ્સએપ મોકલેલ છે.
+                      {t.grievance.successDesc}
                     </p>
                   </div>
 
                   {/* Generated Token Pill */}
                   <div className="p-4 rounded-2xl bg-saffron-50 border border-saffron-300 max-w-sm mx-auto space-y-1">
                     <span className="text-xs font-bold text-saffron-800 uppercase tracking-wider block">
-                      Your Tracking Token Number
+                      {t.grievance.yourToken}
                     </span>
                     <span className="text-3xl font-black text-navy-900 font-heading tracking-wider">
                       {submittedTicket.ticketId}
                     </span>
                   </div>
 
-                  {/* Buttons in English */}
+                  {/* Action Buttons */}
                   <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
                     <button
                       onClick={() => setActiveTab('track')}
                       className="w-full sm:w-auto px-6 py-3 rounded-xl bg-navy-900 text-white text-xs sm:text-sm font-bold shadow hover:bg-navy-800 transition-colors"
                     >
-                      Track Status Now
+                      {t.grievance.trackNow}
                     </button>
                     <button
                       onClick={() => { setSubmittedTicket(null); setFormData({ name: '', mobile: '', village: '', category: 'water', description: '' }); }}
                       className="w-full sm:w-auto px-6 py-3 rounded-xl bg-sand-100 text-navy-900 text-xs sm:text-sm font-bold hover:bg-sand-200 transition-colors"
                     >
-                      Submit Another Grievance
+                      {t.grievance.submitAnother}
                     </button>
                   </div>
                 </div>
@@ -348,10 +360,13 @@ export default function GrievancePage() {
                 <div className="glass-card p-6 sm:p-8 rounded-3xl border border-sand-200 shadow-xl space-y-5">
                   <div className="space-y-1">
                     <h3 className="text-xl font-bold text-navy-900">
-                      Track Grievance Status
+                      {t.grievance.trackBoxTitle}
                     </h3>
                     <p className="text-xs text-slate-500">
-                      Enter your token number (Try sample token: <strong className="text-saffron-600 cursor-pointer underline" onClick={() => setTrackTokenInput('BT-2026-4891')}>BT-2026-4891</strong>)
+                      {t.grievance.sampleHint} (
+                      <span className="text-saffron-600 cursor-pointer underline font-bold" onClick={() => setTrackTokenInput('BT-2026-4891')}>
+                        BT-2026-4891
+                      </span>)
                     </p>
                   </div>
 
@@ -360,18 +375,18 @@ export default function GrievancePage() {
                       <Search className="w-5 h-5 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" />
                       <input
                         type="text"
-                        placeholder="Enter Token (e.g. BT-2026-XXXX)"
+                        placeholder={t.grievance.enterToken}
                         value={trackTokenInput}
                         onChange={(e) => setTrackTokenInput(e.target.value)}
                         className="w-full pl-12 pr-4 py-3 rounded-xl bg-white border border-sand-300 focus:outline-none focus:ring-2 focus:ring-saffron-500 text-sm font-semibold uppercase tracking-wider"
                       />
                     </div>
-                    {/* Track Button in English */}
+                    {/* Track Button */}
                     <button
                       type="submit"
                       className="px-6 py-3 rounded-xl bg-navy-900 hover:bg-navy-800 text-white font-bold text-sm shadow transition-colors flex-shrink-0"
                     >
-                      Track Status
+                      {t.grievance.trackBtn}
                     </button>
                   </form>
 
@@ -389,29 +404,31 @@ export default function GrievancePage() {
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-sand-200 gap-2">
                       <div>
                         <span className="text-xs text-saffron-600 font-bold block">
-                          Token: {trackedTicket.ticketId}
+                          {t.grievance.tokenLabel}: {trackedTicket.ticketId}
                         </span>
                         <h4 className="text-lg font-bold text-navy-900 font-gujarati">
                           {trackedTicket.name} ({trackedTicket.village})
                         </h4>
                       </div>
                       <span className="text-xs text-slate-500">
-                        Logged: {trackedTicket.submittedAt}
+                        {t.grievance.loggedLabel}: {trackedTicket.submittedAt}
                       </span>
                     </div>
 
                     <div className="space-y-4 pt-2">
                       <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block">
-                        Resolution Stepper (Live Progress):
+                        {t.grievance.stepperTitle}
                       </span>
 
                       <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs">
                         <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-300 space-y-1">
                           <div className="flex items-center gap-1.5 text-emerald-700 font-bold">
                             <CheckCircle2 className="w-4 h-4" />
-                            <span>1. Received</span>
+                            <span>1. {t.grievance.step1}</span>
                           </div>
-                          <p className="text-[11px] text-slate-600">Application Logged</p>
+                          <p className="text-[11px] text-slate-600">
+                            {t.grievance.step1Sub}
+                          </p>
                         </div>
 
                         <div className={`p-3 rounded-xl border space-y-1 ${
@@ -421,9 +438,11 @@ export default function GrievancePage() {
                         }`}>
                           <div className="flex items-center gap-1.5 font-bold">
                             <CheckCircle2 className="w-4 h-4" />
-                            <span>2. Review</span>
+                            <span>2. {t.grievance.step2}</span>
                           </div>
-                          <p className="text-[11px] text-slate-600">Secretariat Review</p>
+                          <p className="text-[11px] text-slate-600">
+                            {t.grievance.step2Sub}
+                          </p>
                         </div>
 
                         <div className={`p-3 rounded-xl border space-y-1 ${
@@ -433,9 +452,11 @@ export default function GrievancePage() {
                         }`}>
                           <div className="flex items-center gap-1.5 font-bold">
                             <CheckCircle2 className="w-4 h-4" />
-                            <span>3. Assigned</span>
+                            <span>3. {t.grievance.step3}</span>
                           </div>
-                          <p className="text-[11px] text-slate-600">Officer Assigned</p>
+                          <p className="text-[11px] text-slate-600">
+                            {t.grievance.step3Sub}
+                          </p>
                         </div>
 
                         <div className={`p-3 rounded-xl border space-y-1 ${
@@ -445,9 +466,11 @@ export default function GrievancePage() {
                         }`}>
                           <div className="flex items-center gap-1.5 font-bold">
                             <CheckCircle2 className="w-4 h-4" />
-                            <span>4. Resolved</span>
+                            <span>4. {t.grievance.step4}</span>
                           </div>
-                          <p className="text-[11px] text-slate-600">Issue Resolved</p>
+                          <p className="text-[11px] text-slate-600">
+                            {t.grievance.step4Sub}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -455,7 +478,7 @@ export default function GrievancePage() {
                     {trackedTicket.remarks && (
                       <div className="p-4 rounded-2xl bg-white border border-sand-200 space-y-1 font-gujarati">
                         <span className="text-xs font-bold text-navy-900 block">
-                          ધારાસભ્ય કાર્યાલય નોંઘ (Action Taken):
+                          {t.grievance.officeRemark}
                         </span>
                         <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
                           {trackedTicket.remarks}
@@ -479,20 +502,20 @@ export default function GrievancePage() {
               </div>
               <div>
                 <h4 className="text-base font-bold text-navy-900">
-                  Direct Telephone Assistance
+                  {t.grievance.telephoneHelp}
                 </h4>
                 <p className="text-xs text-slate-600 mt-1 leading-relaxed font-gujarati">
-                  જો આપ ઓનલાઇન ફોર્મ ભરી ન શકો તો સીધા કલોલ કાર્યાલયના હેલ્પલાઇન નંબર પર કોલ કરીને પણ રજૂઆત નોંધાવી શકો છો.
+                  {t.grievance.telephoneHelpDesc}
                 </p>
               </div>
 
-              {/* Button in English */}
+              {/* Helpline button */}
               <a
                 href={`tel:${siteConfig.offices[0].helpline}`}
                 className="w-full py-3 px-4 rounded-xl bg-saffron-gradient text-white text-sm font-bold flex items-center justify-center gap-2 shadow-sm hover:bg-saffron-600 transition-colors"
               >
                 <PhoneCall className="w-4 h-4" />
-                <span>Call Helpline: {siteConfig.offices[0].helpline}</span>
+                <span>{t.grievance.callHelplineBtn}</span>
               </a>
             </div>
 
@@ -503,17 +526,17 @@ export default function GrievancePage() {
               </div>
               <div className="space-y-2 text-xs text-slate-700">
                 <h4 className="text-base font-bold text-navy-900">
-                  Kalol Public Secretariat
+                  {t.grievance.officeCardTitle}
                 </h4>
                 <p className="font-semibold text-saffron-800">
-                  Opposite Town Hall, Station Road, Kalol
+                  {siteConfig.offices[0].name[language]}
                 </p>
                 <p className="text-slate-600 font-gujarati">
-                  {siteConfig.offices[0].address.gu}
+                  {siteConfig.offices[0].address[language]}
                 </p>
                 <div className="pt-2 flex items-center gap-2 text-slate-500 font-medium">
                   <Clock className="w-4 h-4 text-slate-400" />
-                  <span>Monday - Saturday: 9:00 AM - 6:00 PM</span>
+                  <span>{t.grievance.officeHoursTiming}</span>
                 </div>
               </div>
             </div>

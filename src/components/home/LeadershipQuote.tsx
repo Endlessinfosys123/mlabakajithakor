@@ -70,7 +70,7 @@ export default function LeadershipQuote() {
               </div>
 
               <blockquote className="text-xl sm:text-2xl lg:text-3xl font-bold leading-relaxed tracking-tight text-white/95 font-gujarati">
-                &ldquo;કલોલની પવિત્ર ભૂમિના પ્રત્યેક નાગરિકનું હિત અને ખુશાલી એ જ મારી રાજકીય યાત્રાનો એકમાત્ર ધ્યેય છે. ખેડૂત, શ્રમિક, યુવા અને માતા-બહેનોના ઉત્થાન માટે હું હંમેશા આપની પડખે ઊભો છું.&rdquo;
+                &ldquo;{t.home.leadershipQuote}&rdquo;
               </blockquote>
 
               <div className="pt-2 flex items-center gap-4">
@@ -86,8 +86,8 @@ export default function LeadershipQuote() {
                   <h4 className="text-lg font-bold text-white leading-tight font-gujarati">
                     {siteConfig.mlaName[language]}
                   </h4>
-                  <p className="text-xs text-saffron-300">
-                    MLA - Kalol (Gandhinagar)
+                  <p className="text-xs text-saffron-300 font-gujarati">
+                    {t.home.leadershipSub}
                   </p>
                 </div>
               </div>
@@ -95,9 +95,9 @@ export default function LeadershipQuote() {
               <div className="pt-3">
                 <Link
                   href="/about"
-                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-gold-400 hover:text-gold-300 transition-colors group"
+                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-gold-400 hover:text-gold-300 transition-colors group font-gujarati"
                 >
-                  <span>Read Full Biography & Vision</span>
+                  <span>{t.home.readFullBio}</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>

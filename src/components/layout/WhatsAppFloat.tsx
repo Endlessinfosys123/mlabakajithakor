@@ -55,9 +55,9 @@ export default function WhatsAppFloat() {
               </div>
               <div>
                 <h4 className="font-bold text-sm">MLA Office Helpdesk (Kalol)</h4>
-                <p className="text-[11px] text-emerald-100 flex items-center gap-1 font-medium">
+                <p className="text-[11px] text-emerald-100 flex items-center gap-1 font-medium font-gujarati">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse" />
-                  Typically replies within 15 mins
+                  {language === 'gu' ? '૧૫ મિનિટમાં પ્રતિસાદ' : language === 'hi' ? '१५ मिनट में उत्तर' : 'Typically replies within 15 mins'}
                 </p>
               </div>
             </div>
@@ -74,9 +74,13 @@ export default function WhatsAppFloat() {
           <div className="p-4 bg-emerald-50/50 space-y-3 font-gujarati">
             <div className="bg-white p-3 rounded-2xl rounded-tl-none shadow-sm border border-emerald-100/60 text-xs text-slate-800 leading-relaxed">
               <p className="font-medium text-emerald-950 mb-1">
-                જય માતાજી / નમસ્તે! 🙏
+                {language === 'gu' ? 'જય માતાજી / નમસ્તે! 🙏' : language === 'hi' ? 'जय माताजी / नमस्ते! 🙏' : 'Namaste / Greetings! 🙏'}
               </p>
-              ધારાસભ્ય બકાજી ઠાકોર કાર્યાલય (કલોલ) માં આપનું સ્વાગત છે. આપ નીચેનામાંથી વિષય પસંદ કરી વોટ્સએપ પર સીધો મેસેજ કરી શકો છો:
+              {language === 'gu'
+                ? 'ધારાસભ્ય બકાજી ઠાકોર કાર્યાલય (કલોલ) માં આપનું સ્વાગત છે. આપ નીચેનામાંથી વિષય પસંદ કરી વોટ્સએપ પર સીધો મેસેજ કરી શકો છો:'
+                : language === 'hi'
+                ? 'विधायक बकाजी ठाकोर कार्यालय (कलोल) में आपका स्वागत है। आप विषय चुनकर सीधे व्हाट्सएप पर संदेश भेज सकते हैं:'
+                : 'Welcome to MLA Bakaji Thakor Office (Kalol). Choose an inquiry subject below to begin a direct WhatsApp conversation:'}
             </div>
 
             {/* Quick Prompt Options */}
@@ -85,7 +89,7 @@ export default function WhatsAppFloat() {
                 <button
                   key={index}
                   onClick={() => handleOpenWhatsApp(preset.msg)}
-                  className="w-full text-left p-2.5 rounded-xl bg-white hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 text-xs font-medium text-slate-800 transition-all flex items-center justify-between group shadow-2xs"
+                  className="w-full text-left p-2.5 rounded-xl bg-white hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 text-xs font-medium text-slate-800 transition-all flex items-center justify-between group shadow-2xs font-gujarati"
                 >
                   <span className="line-clamp-1">{preset.label[language]}</span>
                   <Send className="w-3.5 h-3.5 text-emerald-600 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
@@ -93,13 +97,15 @@ export default function WhatsAppFloat() {
               ))}
             </div>
 
-            {/* English Button */}
+            {/* Action Button */}
             <button
               onClick={() => handleOpenWhatsApp()}
-              className="w-full py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition-colors flex items-center justify-center gap-2 shadow-sm"
+              className="w-full py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition-colors flex items-center justify-center gap-2 shadow-sm font-gujarati"
             >
               <MessageCircle className="w-4 h-4" />
-              <span>Start WhatsApp Chat</span>
+              <span>
+                {language === 'gu' ? 'વોટ્સએપ ચેટ શરૂ કરો' : language === 'hi' ? 'व्हाट्सएप चैट शुरू करें' : 'Start WhatsApp Chat'}
+              </span>
             </button>
           </div>
         </div>
@@ -116,8 +122,8 @@ export default function WhatsAppFloat() {
           <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-white border-2 border-emerald-600" />
         </span>
         <MessageCircle className="w-6 h-6 fill-white text-emerald-600" />
-        <span className="hidden sm:inline-block font-bold text-xs tracking-wide">
-          WhatsApp Helpline
+        <span className="hidden sm:inline-block font-bold text-xs tracking-wide font-gujarati">
+          {language === 'gu' ? 'વોટ્સએપ હેલ્પલાઇન' : language === 'hi' ? 'व्हाट्सएप हेल्पलाइन' : 'WhatsApp Helpline'}
         </span>
       </button>
     </div>

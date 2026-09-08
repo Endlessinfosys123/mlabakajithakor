@@ -28,8 +28,8 @@ export default function StatsCounter() {
         
         {/* Section Heading */}
         <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
-          <span className="text-xs font-bold uppercase tracking-wider text-saffron-600 bg-saffron-50 px-3 py-1 rounded-full border border-saffron-200 inline-block">
-            પ્રગતિનો રિપોર્ટ કાર્ડ
+          <span className="text-xs font-bold uppercase tracking-wider text-saffron-600 bg-saffron-50 px-3 py-1 rounded-full border border-saffron-200 inline-block font-gujarati">
+            {t.home.statsBadge}
           </span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-navy-900 tracking-tight">
             {t.home.statsTitle}

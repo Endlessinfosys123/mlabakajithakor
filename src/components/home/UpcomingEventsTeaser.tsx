@@ -17,7 +17,7 @@ export default function UpcomingEventsTeaser() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
             <span className="text-xs font-bold uppercase tracking-wider text-saffron-600 bg-saffron-50 px-3 py-1 rounded-full border border-saffron-200 inline-block mb-2 font-gujarati">
-              જાહેર કેલેન્ડર • કલોલ
+              {t.home.eventsBadge}
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-navy-900 tracking-tight font-gujarati">
               {t.home.eventsTitle}
@@ -26,9 +26,9 @@ export default function UpcomingEventsTeaser() {
 
           <Link
             href="/events"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-saffron-600 hover:text-saffron-700 transition-colors group"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-saffron-600 hover:text-saffron-700 transition-colors group font-gujarati"
           >
-            <span>View All Events & Calendar</span>
+            <span>{t.home.viewAllEvents}</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
@@ -69,9 +69,9 @@ export default function UpcomingEventsTeaser() {
 
                 <Link
                   href="/events"
-                  className="w-full py-2.5 px-3 rounded-xl bg-sand-100 hover:bg-sand-200 text-navy-900 text-xs font-bold text-center block transition-colors"
+                  className="w-full py-2.5 px-3 rounded-xl bg-sand-100 hover:bg-sand-200 text-navy-900 text-xs font-bold text-center block transition-colors font-gujarati"
                 >
-                  View Program Details
+                  {t.home.viewProgramDetails}
                 </Link>
               </div>
             </div>

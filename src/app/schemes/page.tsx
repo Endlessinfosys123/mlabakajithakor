@@ -20,11 +20,11 @@ export default function SchemesPage() {
   const [activeScheme, setActiveScheme] = useState<SchemeItem | null>(null);
 
   const audienceFilters = [
-    { id: 'all', label: 'All Schemes' },
-    { id: 'farmers', label: 'Farmers' },
-    { id: 'women', label: 'Women' },
-    { id: 'students', label: 'Students' },
-    { id: 'seniors', label: 'Senior Citizens' },
+    { id: 'all', label: t.audiences.all },
+    { id: 'farmers', label: t.audiences.farmers },
+    { id: 'women', label: t.audiences.women },
+    { id: 'students', label: t.audiences.students },
+    { id: 'seniors', label: t.audiences.seniors },
   ];
 
   const filteredSchemes = schemesData.filter((scheme) => {
@@ -39,28 +39,40 @@ export default function SchemesPage() {
     <div className="bg-sand-50 min-h-screen py-10 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         
-        {/* Breadcrumb in English */}
+        {/* Breadcrumb */}
         <div className="space-y-3">
           <div className="flex items-center gap-2 text-xs font-bold text-saffron-600">
-            <Link href="/" className="hover:underline">Home</Link>
+            <Link href="/" className="hover:underline">
+              {language === 'gu' ? 'મુખ્ય પૃષ્ઠ' : language === 'hi' ? 'मुख्य पृष्ठ' : 'Home'}
+            </Link>
             <span>/</span>
-            <span className="text-slate-500">Govt Schemes</span>
+            <span className="text-slate-500">
+              {language === 'gu' ? 'સરકારી યોજનાઓ' : language === 'hi' ? 'सरकारी योजनाएं' : 'Govt Schemes'}
+            </span>
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight font-gujarati">
-            સરકારી કલ્યાણકારી યોજનાઓ • માર્ગદર્શિકા
+            {language === 'gu'
+              ? 'સરકારી કલ્યાણકારી યોજનાઓ • માર્ગદર્શિકા'
+              : language === 'hi'
+              ? 'सरकारी कल्याणकारी योजनाएं • संकलन'
+              : 'Public Welfare Schemes & Citizen Benefits'}
           </h1>
           <p className="text-slate-600 text-sm sm:text-base max-w-3xl font-gujarati">
-            કેન્દ્ર અને ગુજરાત સરકારની મહત્વપૂર્ણ યોજનાઓ, કોને લાભ મળે, જરૂરી ડોક્યુમેન્ટ્સ અને ઓનલાઇન અરજી કરવાની સરળ સમજ.
+            {language === 'gu'
+              ? 'કેન્દ્ર અને ગુજરાત સરકારની મહત્વપૂર્ણ યોજનાઓ, કોને લાભ મળે, જરૂરી ડોક્યુમેન્ટ્સ અને ઓનલાઇન અરજી કરવાની સરળ સમજ.'
+              : language === 'hi'
+              ? 'केंद्र और गुजरात सरकार की जनकल्याण योजनाएं, पात्रता, आवश्यक दस्तावेज और ऑनलाइन आवेदन का सरल मार्गदर्शन।'
+              : 'Direct guide to state and central government schemes, eligibility guidelines, documentation checklists, and application portals.'}
           </p>
         </div>
 
-        {/* Filter and Search Bar with English buttons */}
+        {/* Filter and Search Bar */}
         <div className="glass-card p-4 sm:p-5 rounded-2xl border border-sand-200 space-y-4">
           <div className="relative">
             <Search className="w-5 h-5 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="Search scheme name or benefits (e.g. Ayushman Card, Kisan Sahay, Namo Lakshmi, Solar)..."
+              placeholder={t.common.searchSchemesPlaceholder}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-12 pr-4 py-3 rounded-xl bg-white border border-sand-300 focus:outline-none focus:ring-2 focus:ring-saffron-500 text-sm font-medium"
@@ -98,7 +110,7 @@ export default function SchemesPage() {
                   </span>
                   {scheme.featured && (
                     <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
-                      મુખ્ય યોજના
+                      {language === 'gu' ? 'મુખ્ય યોજના' : language === 'hi' ? 'प्रमुख योजना' : 'Featured Scheme'}
                     </span>
                   )}
                 </div>
@@ -114,7 +126,9 @@ export default function SchemesPage() {
 
                 {/* Eligibility preview */}
                 <div className="pt-3 border-t border-sand-100 space-y-1.5 text-xs text-slate-700">
-                  <span className="font-semibold text-slate-500 block">પાત્રતા:</span>
+                  <span className="font-semibold text-slate-500 block">
+                    {language === 'gu' ? 'પાત્રતા:' : language === 'hi' ? 'पात्रता:' : 'Eligibility:'}
+                  </span>
                   {scheme.eligibility[language].slice(0, 2).map((el, i) => (
                     <div key={i} className="flex items-center gap-2">
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
@@ -124,22 +138,22 @@ export default function SchemesPage() {
                 </div>
               </div>
 
-              {/* Action Buttons strictly in English */}
+              {/* Action Buttons */}
               <div className="pt-4 mt-4 border-t border-sand-100 flex items-center gap-2">
                 <button
                   onClick={() => setActiveScheme(scheme)}
                   className="flex-1 py-2.5 px-3 rounded-xl bg-sand-100 hover:bg-sand-200 text-navy-900 text-xs font-bold transition-colors text-center"
                 >
-                  Required Documents
+                  {t.common.requiredDocs}
                 </button>
                 <a
                   href={scheme.applicationLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="py-2.5 px-3.5 rounded-xl bg-saffron-gradient hover:bg-saffron-600 text-white text-xs font-bold transition-colors flex items-center justify-center gap-1 shadow-xs"
-                  title="Apply on Official Portal"
+                  title={t.common.applyOnline}
                 >
-                  <span>Apply Online</span>
+                  <span>{t.common.applyOnline}</span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               </div>
@@ -166,7 +180,7 @@ export default function SchemesPage() {
               <button
                 onClick={() => setActiveScheme(null)}
                 className="p-1.5 rounded-full hover:bg-white/20 text-white"
-                aria-label="Close modal"
+                aria-label={t.common.close}
               >
                 <X className="w-5 h-5" />
               </button>
@@ -175,7 +189,7 @@ export default function SchemesPage() {
             <div className="p-6 overflow-y-auto space-y-5 text-sm font-gujarati">
               <div className="p-4 rounded-xl bg-saffron-50/70 border border-saffron-200 space-y-1">
                 <span className="text-xs font-bold text-saffron-800 uppercase tracking-wider block">
-                  મુખ્ય મળવાપાત્ર સહાય:
+                  {t.common.keyBenefits}
                 </span>
                 <p className="text-slate-800 leading-relaxed font-medium">
                   {activeScheme.benefit[language]}
@@ -184,7 +198,7 @@ export default function SchemesPage() {
 
               <div className="space-y-2">
                 <h4 className="font-bold text-navy-900 text-sm uppercase tracking-wider">
-                  કોણ લાભ લઈ શકે? (પાત્રતાના ધોરણો)
+                  {t.common.whoCanApply}
                 </h4>
                 <ul className="space-y-1.5">
                   {activeScheme.eligibility[language].map((e, idx) => (
@@ -198,7 +212,7 @@ export default function SchemesPage() {
 
               <div className="space-y-2">
                 <h4 className="font-bold text-navy-900 text-sm uppercase tracking-wider">
-                  સાથે જોડવાના જરૂરી આધાર પુરાવા (ડોક્યુમેન્ટ્સ):
+                  {t.common.docsRequiredList}
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {activeScheme.documentsRequired[language].map((doc, idx) => (
@@ -211,13 +225,13 @@ export default function SchemesPage() {
               </div>
             </div>
 
-            {/* Modal action buttons in English */}
+            {/* Modal action buttons */}
             <div className="p-4 bg-sand-50 border-t border-sand-200 flex items-center justify-between gap-3">
               <button
                 onClick={() => setActiveScheme(null)}
                 className="px-4 py-2.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs font-bold transition-colors"
               >
-                Close Window
+                {t.common.close}
               </button>
 
               <a
@@ -226,7 +240,7 @@ export default function SchemesPage() {
                 rel="noopener noreferrer"
                 className="px-5 py-2.5 rounded-xl bg-saffron-gradient text-white text-xs font-bold flex items-center gap-2 shadow-xs hover:bg-saffron-600 transition-colors"
               >
-                <span>Apply on Official Portal</span>
+                <span>{t.common.applyOnPortal}</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
             </div>

@@ -18,11 +18,11 @@ export default function FeaturedWorks() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   const categories = [
-    { id: 'all', label: 'All Works' },
-    { id: 'water', label: 'Water & Canal' },
-    { id: 'roads', label: 'Roads & Bridges' },
-    { id: 'health', label: 'Healthcare' },
-    { id: 'education', label: 'Education' },
+    { id: 'all', label: t.categories.all },
+    { id: 'water', label: t.categories.water },
+    { id: 'roads', label: t.categories.roads },
+    { id: 'health', label: t.categories.health },
+    { id: 'education', label: t.categories.education },
   ];
 
   const filteredProjects = selectedCategory === 'all'
@@ -37,19 +37,19 @@ export default function FeaturedWorks() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
             <span className="text-xs font-bold uppercase tracking-wider text-saffron-600 bg-saffron-50 px-3 py-1 rounded-full border border-saffron-200 inline-block mb-2 font-gujarati">
-              વિકાસના મુખ્ય પ્રકલ્પો • કલોલ વિધાનસભા
+              {t.home.featuredWorksBadge}
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-navy-900 tracking-tight font-gujarati">
               {t.home.featuredWorksTitle}
             </h2>
           </div>
 
-          {/* Action button in English */}
+          {/* Action button */}
           <Link
             href="/development"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-saffron-600 hover:text-saffron-700 transition-colors group"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-saffron-600 hover:text-saffron-700 transition-colors group font-gujarati"
           >
-            <span>View All Projects</span>
+            <span>{t.home.viewAllWorks}</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
@@ -88,15 +88,15 @@ export default function FeaturedWorks() {
                   sizes="(max-width: 768px) 100vw, 600px"
                 />
                 
-                {/* Status Badge in English */}
+                {/* Status Badge */}
                 <div className="absolute top-3 right-3">
-                  <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold shadow-md ${
+                  <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold shadow-md font-gujarati ${
                     project.status === 'completed'
                       ? 'bg-emerald-600 text-white'
                       : 'bg-amber-500 text-white'
                   }`}>
                     <CheckCircle2 className="w-3.5 h-3.5" />
-                    {project.status === 'completed' ? 'Completed' : 'In Progress'}
+                    {project.status === 'completed' ? t.common.status.completed : t.common.status.ongoing}
                   </span>
                 </div>
 
@@ -138,7 +138,7 @@ export default function FeaturedWorks() {
                   ))}
                 </div>
 
-                {/* Card Footer with English Action Link */}
+                {/* Card Footer with Action Link */}
                 <div className="pt-2 flex items-center justify-between text-xs font-semibold text-slate-600">
                   <span className="flex items-center gap-1.5 text-slate-700">
                     <Users className="w-3.5 h-3.5 text-emerald-600" />
@@ -147,9 +147,9 @@ export default function FeaturedWorks() {
 
                   <Link
                     href="/development"
-                    className="text-saffron-600 hover:text-saffron-700 inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform font-bold"
+                    className="text-saffron-600 hover:text-saffron-700 inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform font-bold font-gujarati"
                   >
-                    <span>View Details</span>
+                    <span>{t.home.viewDetails}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>

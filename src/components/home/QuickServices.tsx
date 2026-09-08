@@ -30,7 +30,7 @@ export default function QuickServices() {
       },
       href: '/grievance',
       icon: AlertCircle,
-      badge: '24/7 Active',
+      badge: t.quickBadges.active247,
     },
     {
       title: {
@@ -45,7 +45,7 @@ export default function QuickServices() {
       },
       href: '/schemes',
       icon: FileText,
-      badge: 'Assistance',
+      badge: t.quickBadges.assistance,
     },
     {
       title: {
@@ -60,7 +60,7 @@ export default function QuickServices() {
       },
       href: '/contact',
       icon: Sprout,
-      badge: 'Agri Help',
+      badge: t.quickBadges.agriHelp,
     },
     {
       title: {
@@ -75,7 +75,7 @@ export default function QuickServices() {
       },
       href: '/development',
       icon: GraduationCap,
-      badge: 'Youth Desk',
+      badge: t.quickBadges.youthDesk,
     },
     {
       title: {
@@ -90,7 +90,7 @@ export default function QuickServices() {
       },
       href: '/contact',
       icon: Calendar,
-      badge: 'Meeting',
+      badge: t.quickBadges.meeting,
     },
     {
       title: {
@@ -105,7 +105,7 @@ export default function QuickServices() {
       },
       href: '/schemes',
       icon: HeartHandshake,
-      badge: 'Social Care',
+      badge: t.quickBadges.socialCare,
     },
   ];
 
@@ -116,13 +116,13 @@ export default function QuickServices() {
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
           <span className="text-xs font-bold uppercase tracking-wider text-saffron-600 bg-saffron-50 px-3 py-1 rounded-full border border-saffron-200 inline-block font-gujarati">
-            નાગરિક સુવિધા કેન્દ્ર • કલોલ વિધાનસભા
+            {t.home.quickServicesBadge}
           </span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-navy-900 tracking-tight font-gujarati">
             {t.home.quickServicesTitle}
           </h2>
           <p className="text-slate-600 text-xs sm:text-sm font-gujarati">
-            કલોલ શહેર અને ગ્રામ્ય નાગરિકોની રોજિંદી જરૂરિયાતો અને સરકારી કામકાજ માટે એક જ સ્થળે તમામ સહાય
+            {t.home.quickServicesSubtitle}
           </p>
         </div>
 
@@ -141,7 +141,7 @@ export default function QuickServices() {
                     <div className="w-12 h-12 rounded-xl bg-saffron-50 text-saffron-600 group-hover:bg-saffron-gradient group-hover:text-white transition-all duration-300 flex items-center justify-center shadow-2xs">
                       <Icon className="w-6 h-6" />
                     </div>
-                    <span className="text-[11px] font-bold text-slate-600 bg-sand-100 px-2.5 py-1 rounded-full border border-sand-200">
+                    <span className="text-[11px] font-bold text-slate-600 bg-sand-100 px-2.5 py-1 rounded-full border border-sand-200 font-gujarati">
                       {item.badge}
                     </span>
                   </div>
@@ -156,8 +156,8 @@ export default function QuickServices() {
                   </div>
                 </div>
 
-                <div className="pt-4 mt-4 border-t border-sand-100 flex items-center justify-between text-xs font-bold text-saffron-600 group-hover:text-saffron-700">
-                  <span>Access Service</span>
+                <div className="pt-4 mt-4 border-t border-sand-100 flex items-center justify-between text-xs font-bold text-saffron-600 group-hover:text-saffron-700 font-gujarati">
+                  <span>{t.home.accessService}</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </div>
               </Link>

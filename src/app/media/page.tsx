@@ -70,22 +70,26 @@ export default function MediaPage() {
     <div className="bg-sand-50 min-h-screen py-10 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         
-        {/* Breadcrumb in English */}
+        {/* Breadcrumb */}
         <div className="space-y-3">
           <div className="flex items-center gap-2 text-xs font-bold text-saffron-600">
-            <Link href="/" className="hover:underline">Home</Link>
+            <Link href="/" className="hover:underline">
+              {language === 'gu' ? 'મુખ્ય પૃષ્ઠ' : language === 'hi' ? 'मुख्य पृष्ठ' : 'Home'}
+            </Link>
             <span>/</span>
-            <span className="text-slate-500">News & Media</span>
+            <span className="text-slate-500">
+              {language === 'gu' ? 'સમાચાર અને મીડિયા' : language === 'hi' ? 'समाचार और मीडिया' : 'News & Media'}
+            </span>
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight font-gujarati">
-            પ્રેસ કવરેજ, ભાષણો અને ફોટો ગેલેરી (કલોલ)
+            {t.mediaPage.title}
           </h1>
           <p className="text-slate-600 text-sm sm:text-base max-w-2xl font-gujarati">
-            કલોલ મતવિસ્તારની સેવાકીય પ્રવૃત્તિઓ, અખબારી અહેવાલો, વિધાનસભા ભાષણો અને જાહેર કાર્યક્રમોની તસવીરો.
+            {t.mediaPage.subtitle}
           </p>
         </div>
 
-        {/* Tab Switcher strictly in English */}
+        {/* Tab Switcher */}
         <div className="flex items-center gap-2 border-b border-sand-300 pb-2 overflow-x-auto">
           <button
             onClick={() => setActiveTab('press')}
@@ -96,7 +100,7 @@ export default function MediaPage() {
             }`}
           >
             <Newspaper className="w-4 h-4" />
-            <span>Press Coverage</span>
+            <span>{t.mediaPage.tabPress}</span>
           </button>
           
           <button
@@ -108,7 +112,7 @@ export default function MediaPage() {
             }`}
           >
             <Video className="w-4 h-4" />
-            <span>Speeches & Videos</span>
+            <span>{t.mediaPage.tabVideos}</span>
           </button>
 
           <button
@@ -120,7 +124,7 @@ export default function MediaPage() {
             }`}
           >
             <ImageIcon className="w-4 h-4" />
-            <span>Photo Gallery</span>
+            <span>{t.mediaPage.tabPhotos}</span>
           </button>
         </div>
 
@@ -163,9 +167,9 @@ export default function MediaPage() {
                     </p>
                   </div>
 
-                  {/* Button in English */}
+                  {/* Button */}
                   <div className="pt-2 border-t border-sand-100 flex items-center justify-between text-xs font-bold text-saffron-600">
-                    <span>Read Full Press Release</span>
+                    <span>{t.mediaPage.readPress}</span>
                     <ExternalLink className="w-3.5 h-3.5" />
                   </div>
                 </div>
@@ -242,13 +246,13 @@ export default function MediaPage() {
 
       </div>
 
-      {/* Lightbox Modal with English Close Button */}
+      {/* Lightbox Modal */}
       {selectedPhoto && (
         <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4">
           <button
             onClick={() => setSelectedPhoto(null)}
             className="absolute top-6 right-6 p-2.5 rounded-full bg-white/20 hover:bg-white/30 text-white"
-            aria-label="Close photo"
+            aria-label={t.mediaPage.closePhoto}
           >
             <X className="w-6 h-6" />
           </button>
@@ -270,7 +274,7 @@ export default function MediaPage() {
             onClick={() => setSelectedPhoto(null)}
             className="mt-4 px-6 py-2 rounded-xl bg-white text-navy-900 font-bold text-xs hover:bg-slate-200 transition-colors"
           >
-            Close
+            {t.mediaPage.closePhoto}
           </button>
         </div>
       )}

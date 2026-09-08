@@ -29,7 +29,7 @@ export default function WhatsAppSubscribe() {
               {t.home.whatsAppSignupTitle}
             </h2>
             <p className="text-xs sm:text-sm text-emerald-100/80 max-w-xl mx-auto leading-relaxed font-gujarati">
-              કલોલ શહેર અને ગ્રામ્ય વિકાસ કામો, નવી સરકારી યોજનાઓની જાહેરાત અને ધારાસભ્યશ્રીના પ્રવાસ કાર્યક્રમની સત્તાવાર માહિતી સીધી આપના ફોન પર મેળવો.
+              {t.home.whatsAppSubtitle}
             </p>
           </div>
 
@@ -38,26 +38,26 @@ export default function WhatsAppSubscribe() {
               <button
                 type="button"
                 onClick={handleDirectWhatsApp}
-                className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-bold text-sm shadow-lg hover:shadow-emerald-500/30 transition-all flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-bold text-sm shadow-lg hover:shadow-emerald-500/30 transition-all flex items-center justify-center gap-2 font-gujarati"
               >
                 <MessageCircle className="w-5 h-5 fill-navy-950" />
-                <span>Join Official WhatsApp Channel</span>
+                <span>{t.home.whatsAppSignupBtn}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
           ) : (
             <div className="p-4 rounded-xl bg-white/10 border border-emerald-400/40 text-emerald-200 text-sm font-semibold max-w-md mx-auto flex items-center justify-center gap-2 font-gujarati">
               <CheckCircle className="w-5 h-5 text-emerald-400" />
-              <span>આપનું નામ સફળતાપૂર્વક યાદીમાં જોડાઈ ગયું છે! આપનો આભાર.</span>
+              <span>{t.home.whatsAppSuccess}</span>
             </div>
           )}
 
-          <div className="flex items-center justify-center gap-4 text-xs text-emerald-200/60 pt-2">
+          <div className="flex items-center justify-center gap-4 text-xs text-emerald-200/80 pt-2 font-gujarati">
             <span className="flex items-center gap-1">
-              <ShieldCheck className="w-3.5 h-3.5" /> No Spam • Verified Updates
+              <ShieldCheck className="w-3.5 h-3.5" /> {t.home.noSpam}
             </span>
             <span>•</span>
-            <span>100% Free Citizen Service</span>
+            <span>{t.home.freeService}</span>
           </div>
 
         </div>
